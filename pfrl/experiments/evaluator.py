@@ -520,6 +520,7 @@ class AsyncEvaluator(object):
         return v
 
     def evaluate_and_update_max_score(self, t, episodes, env, agent):
+        print(f"pid {os.getpid()} eval_performance start")
         eval_stats = eval_performance(
             env,
             agent,
@@ -528,6 +529,7 @@ class AsyncEvaluator(object):
             max_episode_len=self.max_episode_len,
             logger=self.logger,
         )
+        print(f"pid {os.getpid()} eval_performance end")
         elapsed = time.time() - self.start_time
         agent_stats = agent.get_statistics()
         custom_values = tuple(tup[1] for tup in agent_stats)
