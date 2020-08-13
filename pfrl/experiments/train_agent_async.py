@@ -211,7 +211,7 @@ def train_agent_async(
     Returns:
         Trained agent.
     """
-
+    print(f"pid {os.getpid()} train_agent_async ", eval_interval)
     logger = logger or logging.getLogger(__name__)
 
     # Prevent numpy from using multiple threads

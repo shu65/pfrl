@@ -482,6 +482,7 @@ class AsyncEvaluator(object):
         logger=None,
         use_tensorboard=False,
     ):
+        print(f"pid {os.getpid()} AsyncEvaluator ", eval_interval)
         assert (n_steps is None) != (n_episodes is None), (
             "One of n_steps or n_episodes must be None. "
             + "Either we evaluate for a specified number "
