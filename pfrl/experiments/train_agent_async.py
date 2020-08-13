@@ -97,7 +97,7 @@ def train_loop(
                     logger.info("statistics:%s", agent.get_statistics())
 
                 # Evaluate the current agent
-                if evaluator is not None:
+                if process_idx == 0 and evaluator is not None:
                     eval_score = evaluator.evaluate_if_necessary(
                         t=global_t, episodes=global_episodes, env=eval_env, agent=agent
                     )
