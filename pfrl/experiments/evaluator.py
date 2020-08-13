@@ -565,9 +565,11 @@ class AsyncEvaluator(object):
     def evaluate_if_necessary(self, t, episodes, env, agent):
         necessary = False
         with self.prev_eval_t.get_lock():
+            print(f"pid {os.getpid()} evaluate_if_necessary t", t, "self.prev_eval_t.value", self.prev_eval_t.value, "self.eval_interval", self.eval_interval)
             if t >= self.prev_eval_t.value + self.eval_interval:
                 necessary = True
                 self.prev_eval_t.value += self.eval_interval
+        print(f"pid {os.getpid()} evaluate_if_necessary necessary", necessary)
         if necessary:
             with self.wrote_header.get_lock():
                 if not self.wrote_header.value:
