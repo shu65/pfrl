@@ -542,7 +542,11 @@ class AsyncEvaluator(object):
             eval_stats["max"],
             eval_stats["min"],
         ) + custom_values
+        print(f"pid {os.getpid()} record_stats start")
         record_stats(self.outdir, values)
+        print(f"pid {os.getpid()} record_stats end")
+        print(f"pid {os.getpid()} record_stats values values")
+
 
         if self.use_tensorboard:
             record_tb_stats(self.tb_writer, agent_stats, eval_stats, t)
