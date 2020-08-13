@@ -42,7 +42,7 @@ def _run_episodes(
     scores = []
     terminate = False
     timestep = 0
-    print(f"pid {os.getpid()} eval model parameters ", agent.model.parameters()[0])
+    print(f"pid {os.getpid()} eval model parameters ", agent.model.parameters().__next__())
     reset = True
     while not terminate:
         if reset:
