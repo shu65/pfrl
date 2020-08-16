@@ -1,4 +1,7 @@
 from logging import getLogger
+import os
+import traceback
+
 
 import numpy as np
 
@@ -80,6 +83,7 @@ class LinearDecayEpsilonGreedy(explorer.Explorer):
         a, greedy = select_action_epsilon_greedily(
             self.epsilon, self.random_action_func, greedy_action_func
         )
+        print(f"pid {os.getpid()} select_action stack", traceback.format_stack)
         greedy_str = "greedy" if greedy else "non-greedy"
         self.logger.debug("t:%s a:%s %s", t, a, greedy_str)
         return a
