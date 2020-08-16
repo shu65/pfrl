@@ -1,4 +1,5 @@
 from logging import getLogger
+import os
 
 import torch
 
@@ -78,6 +79,7 @@ class StateQFunctionActor(agent.AsyncAgent):
             action_value = self._evaluate_model_and_update_recurrent_states([obs])
             greedy_action = action_value.greedy_actions.cpu().numpy()[0]
         if self.training:
+            print(f"pid {os.getpid()} torch act greedy_action", greedy_action)
             action = self.explorer.select_action(
                 self.t, lambda: greedy_action, action_value=action_value
             )
